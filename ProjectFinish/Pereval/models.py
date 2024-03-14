@@ -1,25 +1,29 @@
 from django.db import models
+from .services import get_path_upload_images
+
 
 class Users(models.Model):
-    famil = models.CharField(max_length=128, verbose_name='Фамилия')
+    fam = models.CharField(max_length=128, verbose_name='Фамилия')
     name = models.CharField(max_length=128, verbose_name='Имя')
-    ot = models.CharField(max_length=128, verbose_name='Отчество')
-    email = models.EmailField(max_length=128, verbose_name='Почта')
+    otc = models.CharField(max_length=128, verbose_name='Отчество')
+    email = models.EmailField(max_length=128)
     phone = models.IntegerField(verbose_name='Телефон')
 
     def __str__(self):
-        return f'Фамилия: {self.famil}, Имя: {self.name}, Отчество: {self.ot}, Почта: {self.email}, Телефон: {self.phone}'
+        return f'fam: {self.fam}, name: {self.name}, otc: {self.otc}, email: {self.email}, phone: {self.phone}'
 
-class Coord(models.Model):
+
+class Coords(models.Model):
     latitude = models.FloatField(max_length=20, verbose_name='Широта')
     longitude = models.FloatField(max_length=20, verbose_name='Долгота')
     height = models.IntegerField(verbose_name='Высота')
 
     def str(self):
-        return f'Широта: {self.latitude}, Долгота: {self.longitude}, Высота: {self.height}'
+        return f'Широта: {self.latitude}, долгота: {self.longitude}, высота: {self.height}.'
+
 
 class Level(models.Model):
-    Level = [
+    LEVEL = [
         ('1B', '1Б'),
         ('2A', '2А'),
         ('2B', '2Б'),
@@ -43,6 +47,8 @@ class Level(models.Model):
                f'осень: {self.autumn}, весна: {self.spring}.'
 
 
+
+
 class SprActivitiesTypes(models.Model):
 
     TYPE = [
@@ -59,6 +65,8 @@ class SprActivitiesTypes(models.Model):
     ]
 
     title = models.CharField(max_length=10, choices=TYPE, verbose_name='Тип похода')
+
+
 
 
 class Perevals(models.Model):
@@ -91,3 +99,4 @@ class Images(models.Model):
     date_added = models.DateTimeField(auto_now_add=True, blank=True, null=True, verbose_name='Дата добавления')
     # image = models.ImageField(upload_to=get_path_upload_images, verbose_name='Изображение', blank=True, null=True)
     image = models.ImageField(upload_to='images', verbose_name='Изображение', blank=True, null=True)
+
