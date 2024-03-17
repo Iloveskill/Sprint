@@ -1,7 +1,5 @@
 # Rest API для ФСТР
-![Изображение](https://avatars.mds.yandex.net/i?id=666d6e5b74b723a62694e6a80218a35f9ef04b43-9858868-images-thumbs&n=13)
 
-**[Данный проект опубликован на pythonanywhere.com]()**
 ## 1. Описание и задача
 
 
